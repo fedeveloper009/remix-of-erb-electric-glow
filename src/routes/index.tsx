@@ -29,7 +29,7 @@ import {
 import { Button } from "@/components/ui/button";
 import heroImage from "@/assets/erb-hero.jpg";
 import livingImage from "@/assets/erb-living.jpg";
-import logoAsset from "@/assets/erb-logo-trimmed.png.asset.json";
+import logoAsset from "@/assets/erb-logo-trimmed.png";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -146,7 +146,7 @@ function Index() {
       <header className="fixed inset-x-0 top-0 z-50 border-b border-border/60 bg-background/80 backdrop-blur-xl">
         <div className="mx-auto flex h-20 max-w-7xl items-center justify-between px-5 lg:px-8">
           <a href="#inicio" aria-label="ERB Elétrica — início" className="shrink-0">
-            <img src={logoAsset.url} alt="ERB Elétrica" className="h-12 w-auto" />
+            <img src={logoAsset} alt="ERB Elétrica" className="h-12 w-auto" />
           </a>
           <nav className="hidden items-center gap-8 md:flex" aria-label="Navegação principal">
             {[
@@ -322,9 +322,9 @@ function Index() {
 
       <footer id="contato" className="bg-footer py-16 text-footer-foreground">
         <div className="mx-auto grid max-w-7xl gap-12 px-5 lg:grid-cols-[1.2fr_0.8fr_0.8fr] lg:px-8">
-          <div><img src={logoAsset.url} alt="ERB Elétrica" className="h-16 w-auto" /><p className="mt-6 max-w-sm text-sm leading-6 text-footer-muted">Soluções elétricas, automação e iluminação desenvolvidas para tornar seus espaços mais seguros, eficientes e inteligentes.</p></div>
+          <div><img src={logoAsset} alt="ERB Elétrica" className="h-16 w-auto" /><p className="mt-6 max-w-sm text-sm leading-6 text-footer-muted">Soluções elétricas, automação e iluminação desenvolvidas para tornar seus espaços mais seguros, eficientes e inteligentes.</p></div>
           <div><h3 className="footer-title">Atendimento</h3><div className="mt-5 space-y-4 text-sm text-footer-muted"><a href={whatsappLink("Olá, ERB Elétrica! Gostaria de falar com a equipe.")} target="_blank" rel="noreferrer" className="footer-link"><MessageCircle /> WhatsApp (11) 97457-5827</a><a href="tel:+5511974575827" className="footer-link"><Phone /> (11) 97457-5827</a><a href="mailto:erbeletrica01@gmail.com" className="footer-link"><Mail /> erbeletrica01@gmail.com</a></div></div>
-          <div><h3 className="footer-title">Informações</h3><div className="mt-5 space-y-4 text-sm text-footer-muted"><p className="footer-link"><Clock3 /> Atendimento sob consulta</p><p className="footer-link"><MapPin /> Atendimento regional</p><p className="footer-link"><Building2 /> Residencial, comercial e predial</p></div></div>
+          <div><h3 className="footer-title">Informações</h3><div className="mt-5 space-y-4 text-sm text-footer-muted"><p className="footer-link"><Clock3 /> Atendimento sob consulta</p><p className="footer-link"><MapPin /> Atendimento regional</p><p className="footer-link"><Building2 /> Industrial, comercial e predial</p></div></div>
         </div>
         <div className="mx-auto mt-14 flex max-w-7xl flex-col gap-3 border-t border-footer-border px-5 pt-7 text-xs text-footer-muted sm:flex-row sm:justify-between lg:px-8"><p>© 2026 ERB Elétrica. Todos os direitos reservados.</p><p>Energia • Tecnologia • Segurança</p></div>
       </footer>
