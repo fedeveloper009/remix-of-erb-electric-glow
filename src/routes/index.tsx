@@ -27,9 +27,26 @@ import {
 } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
 import heroImage from "@/assets/erb-hero.jpg";
 import livingImage from "@/assets/erb-living.jpg";
 import logoAsset from "@/assets/erb-logo-trimmed.png";
+import galleryImage1 from "@/assets/s1.jpeg";
+import galleryImage2 from "@/assets/s2.jpeg";
+import galleryImage3 from "@/assets/s3.jpeg";
+import galleryImage4 from "@/assets/s4.jpeg";
+import galleryImage5 from "@/assets/s5.jpeg";
+import galleryImage6 from "@/assets/s6.jpeg";
+import galleryImage7 from "@/assets/s7.jpeg";
+import galleryImage8 from "@/assets/s8.jpeg";
+import galleryImage9 from "@/assets/s9.jpeg";
+import galleryImage10 from "@/assets/s10.jpeg";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -109,6 +126,19 @@ const testimonials = [
   },
 ];
 
+const galleryImages = [
+  galleryImage1,
+  galleryImage2,
+  galleryImage3,
+  galleryImage4,
+  galleryImage5,
+  galleryImage6,
+  galleryImage7,
+  galleryImage8,
+  galleryImage9,
+  galleryImage10,
+];
+
 const WHATSAPP_NUMBER = "5511974575827";
 const whatsappLink = (message: string) =>
   `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
@@ -153,6 +183,7 @@ function Index() {
               ["Serviços", "#servicos"],
               ["Diferenciais", "#diferenciais"],
               ["Projetos", "#projetos"],
+              ["Galeria", "#galeria"],
               ["Contato", "#contato"],
             ].map(([label, href]) => (
               <a key={href} href={href} className="text-sm font-medium text-muted-foreground transition-colors hover:text-primary">
@@ -169,7 +200,7 @@ function Index() {
         </div>
         {menuOpen && (
           <nav className="border-t border-border bg-background px-5 py-5 md:hidden">
-            {[["Serviços", "#servicos"], ["Diferenciais", "#diferenciais"], ["Projetos", "#projetos"], ["Contato", "#contato"]].map(([item, href]) => (
+            {[["Serviços", "#servicos"], ["Diferenciais", "#diferenciais"], ["Projetos", "#projetos"], ["Galeria", "#galeria"], ["Contato", "#contato"]].map(([item, href]) => (
               <a key={item} href={href} onClick={() => setMenuOpen(false)} className="block border-b border-border py-3 font-medium">
                 {item}
               </a>
@@ -271,6 +302,48 @@ function Index() {
               <p className="text-sm font-bold uppercase tracking-[0.16em] text-primary">Ambientes conectados</p>
               <h3 className="mt-3 max-w-md font-display text-3xl font-bold text-hero-foreground">Iluminação inteligente que acompanha cada momento.</h3>
             </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="galeria" className="border-y border-border bg-secondary/30 py-24">
+        <div className="mx-auto max-w-7xl px-5 lg:px-8">
+          <div className="grid items-center gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:gap-14">
+            <div>
+              <p className="section-kicker">Galeria de fotos</p>
+              <h2 className="section-title mt-4">Projetos e detalhes que dão vida a cada ambiente.</h2>
+              <p className="mt-6 max-w-md text-sm leading-6 text-muted-foreground">
+                Confira alguns registros dos trabalhos da ERB Elétrica e inspire-se para o seu próximo projeto.
+              </p>
+            </div>
+            <Carousel
+              opts={{ loop: true }}
+              className="group relative min-w-0"
+              aria-label="Galeria de fotos dos projetos da ERB Elétrica"
+            >
+              <CarouselContent>
+                {galleryImages.map((image, index) => (
+                  <CarouselItem key={image}>
+                    <div className="flex aspect-[3/2] items-center justify-center overflow-hidden rounded-sm border border-border bg-card">
+                      <img
+                        src={image}
+                        alt={`Foto ${index + 1} da galeria de projetos da ERB Elétrica`}
+                        loading="lazy"
+                        className="h-full w-full object-contain"
+                      />
+                    </div>
+                  </CarouselItem>
+                ))}
+              </CarouselContent>
+              <CarouselPrevious
+                aria-label="Foto anterior"
+                className="left-3 top-1/2 z-10 size-11 -translate-y-1/2 border-white/30 bg-background/70 text-foreground backdrop-blur hover:bg-background"
+              />
+              <CarouselNext
+                aria-label="Próxima foto"
+                className="right-3 top-1/2 z-10 size-11 -translate-y-1/2 border-white/30 bg-background/70 text-foreground backdrop-blur hover:bg-background"
+              />
+            </Carousel>
           </div>
         </div>
       </section>
