@@ -151,8 +151,11 @@ const galleryImages = [
 ];
 
 const WHATSAPP_NUMBER = "5511974575827";
+const CONTACT_EMAIL = "contato@erbeletrica.com";
 const whatsappLink = (message: string) =>
   `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
+const emailLink = (subject: string, body: string) =>
+  `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
 
 function WhatsAppIcon({ className = "size-5" }: { className?: string }) {
   return (
@@ -172,13 +175,12 @@ function Index() {
     const service = form.get("service");
     const location = form.get("location");
     const name = form.get("name");
+    const phone = form.get("phone");
+    const details = form.get("details");
     setSent(true);
-    window.open(
-      whatsappLink(
-        `Olá, ERB Elétrica! Sou ${name}. Gostaria de um orçamento para ${service}, em ${location}.`,
-      ),
-      "_blank",
-      "noopener,noreferrer",
+    window.location.href = emailLink(
+      "Solicitação de orçamento - ERB Elétrica",
+      `Olá, ERB Elétrica!\n\nNome: ${name}\nTelefone / WhatsApp: ${phone}\nServiço: ${service}\nLocal: ${location}\nDetalhes do projeto: ${details || "Não informado"}`,
     );
   }
 
@@ -301,11 +303,12 @@ function Index() {
                 className="h-13 border-hero-foreground/20 bg-hero-foreground/5 px-7 text-base text-hero-foreground backdrop-blur-md hover:bg-hero-foreground/10 hover:text-hero-foreground"
               >
                 <a
-                  href={whatsappLink("Olá, ERB Elétrica! Gostaria de solicitar um orçamento.")}
-                  target="_blank"
-                  rel="noreferrer"
+                  href={emailLink(
+                    "Solicitação de orçamento - ERB Elétrica",
+                    "Olá, ERB Elétrica! Gostaria de solicitar um orçamento.",
+                  )}
                 >
-                  <MessageCircle /> Falar no WhatsApp
+                  <Mail /> Enviar e-mail
                 </a>
               </Button>
             </div>
@@ -540,18 +543,13 @@ function Index() {
             </ul>
             <div className="mt-10 space-y-3 text-sm">
               <a
-                href={whatsappLink("Olá, ERB Elétrica! Gostaria de solicitar um orçamento.")}
-                target="_blank"
-                rel="noreferrer"
+                href={emailLink(
+                  "Solicitação de orçamento - ERB Elétrica",
+                  "Olá, ERB Elétrica! Gostaria de solicitar um orçamento.",
+                )}
                 className="flex items-center gap-3 font-semibold transition-opacity hover:opacity-80"
               >
-                <MessageCircle className="size-4" /> (11) 97457-5827
-              </a>
-              <a
-                href="mailto:contato@erbeletrica.com"
-                className="flex items-center gap-3 font-semibold transition-opacity hover:opacity-80"
-              >
-                <Mail className="size-4" /> contato@erbeletrica.com
+                <Mail className="size-4" /> Enviar e-mail
               </a>
             </div>
           </div>
@@ -607,13 +605,13 @@ function Index() {
               <Button
                 type="submit"
                 size="lg"
-                className="h-12 w-full bg-whatsapp px-7 font-bold text-whatsapp-foreground hover:bg-whatsapp/90 sm:w-auto"
+                className="h-12 w-full bg-accent px-7 font-bold text-accent-foreground hover:bg-accent/90 sm:w-auto"
               >
-                <WhatsAppIcon /> Enviar pelo WhatsApp
+                <Mail /> Enviar por e-mail
               </Button>
               {sent && (
                 <p className="flex items-center gap-2 text-sm font-medium text-success">
-                  <CheckCircle2 className="size-4" /> Solicitação preparada com sucesso.
+                  <CheckCircle2 className="size-4" /> E-mail preparado para envio.
                 </p>
               )}
             </div>
@@ -687,18 +685,16 @@ function Index() {
             <h3 className="footer-title">Atendimento</h3>
             <div className="mt-5 space-y-4 text-sm text-footer-muted">
               <a
-                href={whatsappLink("Olá, ERB Elétrica! Gostaria de falar com a equipe.")}
-                target="_blank"
-                rel="noreferrer"
+                href={emailLink(
+                  "Contato - ERB Elétrica",
+                  "Olá, ERB Elétrica! Gostaria de falar com a equipe.",
+                )}
                 className="footer-link"
               >
-                <MessageCircle /> WhatsApp (11) 97457-5827
+                <Mail /> Enviar e-mail
               </a>
               <a href="tel:+5511974575827" className="footer-link">
                 <Phone /> (11) 97457-5827
-              </a>
-              <a href="mailto:contato@erbeletrica.com" className="footer-link">
-                <Mail /> contato@erbeletrica.com
               </a>
             </div>
           </div>
